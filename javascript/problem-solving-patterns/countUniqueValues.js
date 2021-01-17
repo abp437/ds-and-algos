@@ -11,7 +11,7 @@ countUniqueValues([-2, -1, -1, 0, 1])  => 4
 */
 
 // Naive way:
-function countUniqueValues(sortedArray) {
+function akshayCountUniqueValues(sortedArray) {
   if (!Array.isArray(sortedArray)) {
     throw new Error('Expected to pass an array to this function!');
   }
@@ -31,6 +31,17 @@ function countUniqueValues(sortedArray) {
 }
 
 // Instructor's Count Unique Values Way:
+function countUniqueValues(arr) {
+  if (arr.length === 0) return 0;
+  var i = 0;
+  for (var j = 1; j < arr.length; j++) {
+    if (arr[i] !== arr[j]) {
+      i++;
+      arr[i] = arr[j];
+    }
+  }
+  return i + 1;
+}
 
 
 console.log(countUniqueValues([1, 1, 1, 1, 1, 2]));
