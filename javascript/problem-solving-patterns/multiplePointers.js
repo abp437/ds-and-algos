@@ -11,9 +11,9 @@ sumZero([-4, -3, -2, -1, 0, 1, 2, 5])  => [-2, 2]
 */
 
 // Naive way:
-function sumZero(sortedArray) {
+function akshaySumZero(sortedArray) {
   if (!Array.isArray(sortedArray)) {
-    throw new Error('Expected to pass an array to this function!');
+    throw new Error("Expected to pass an array to this function!");
   }
 
   const arrayLength = sortedArray.length;
@@ -46,7 +46,23 @@ function sumZero(sortedArray) {
   return;
 }
 
-// Multiple Pointers Way:
+// Instructor's Multiple Pointers Way:
+function sumZero(arr) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    const sum = arr[left] + arr[right];
+
+    if (sum === 0) {
+      return [arr[left], arr[right]];
+    } else if (sum > 0) {
+      right--;
+    } else {
+      left++;
+    }
+  }
+}
 
 console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]));
 console.log(sumZero([-2, 0, 1, 3]));
