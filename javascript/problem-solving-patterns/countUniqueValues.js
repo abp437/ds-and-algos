@@ -19,23 +19,15 @@ function countUniqueValues(sortedArray) {
   let left = 0;
   let right = sortedArray.length - 1;
 
-  const uniqueCount = {};
+  const uniqueSet = new Set();
   while (left < right) {
-    const leftValue = sortedArray[left];
-    const rightValue = sortedArray[right];
-
-    if (!uniqueCount[leftValue]) {
-      uniqueCount[leftValue] = true;
-    }
-    if (!uniqueCount[rightValue]) {
-      uniqueCount[rightValue] = true;
-    }
-
+    uniqueSet.add(sortedArray[left]);
+    uniqueSet.add(sortedArray[right]);
     left++;
     right--;
   }
 
-  return Object.keys(uniqueCount).length;
+  return uniqueSet.size;
 }
 
 // Instructor's Count Unique Values Way:
