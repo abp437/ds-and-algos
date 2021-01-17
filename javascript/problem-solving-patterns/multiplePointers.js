@@ -7,7 +7,7 @@ Examples:
 sumZero([-3, -2, -1, 0, 1, 2, 3]) => [-3, 3]
 sumZero([-2, 0, 1, 3]) => undefined
 sumZero([1, 2, 3]) => undefined
-sumZero([-4, -3, -2, -1, 0, 1, 2, 5])  => [-1, 1]
+sumZero([-4, -3, -2, -1, 0, 1, 2, 5])  => [-2, 2]
 */
 
 // Naive way:
@@ -16,7 +16,34 @@ function sumZero(sortedArray) {
     throw new Error('Expected to pass an array to this function!');
   }
 
-  return [];
+  const arrayLength = sortedArray.length;
+  let breakpoint;
+
+  for (let i = 0; i < arrayLength; i++) {
+    const leftElem = sortedArray[i];
+    if (leftElem >= 0) {
+      break;
+    }
+    const leftAbsValue = Math.abs(leftElem);
+
+    for (let j = arrayLength - 1; j > 0; j--) {
+      const rightElem = sortedArray[j];
+
+      if (leftAbsValue > rightElem) {
+        break;
+      }
+
+      if (rightElem === leftAbsValue) {
+        breakpoint = rightElem;
+        break;
+      }
+    }
+    if (breakpoint) {
+      return [leftElem, breakpoint];
+    }
+  }
+
+  return;
 }
 
 // Multiple Pointers Way:
