@@ -32,7 +32,7 @@ function rotateArr(arr, rotateFactor) {
 }
 
 function main() {
-  const rotatedArr = rotateArr([32, 25, 56, 87, 999, 26], -3);
+  const rotatedArr = rotateArr([32, 25, 56, 87, 999, 26], -4);
 
   console.log(rotatedArr);
 }
