@@ -19,7 +19,7 @@ class ArrayRotation {
 
   // Private Methods
 
-  #pushOnArray(start, end) {
+  createArray(start, end) {
     const arr = [];
     for (let i = start; i < end; i++) {
       arr.push(this.#arr[i]);
@@ -28,21 +28,21 @@ class ArrayRotation {
     return arr;
   }
 
-  #swapArrayBlocksAfterIndex(swapElemIndex) {
+  #swapArrayBlocksOnIndex(breakIndex) {
     return [
-      ...this.#pushOnArray(swapElemIndex, this.#arr.length),
-      ...this.#pushOnArray(0, swapElemIndex),
+      ...this.createArray(breakIndex, this.#arr.length),
+      ...this.createArray(0, breakIndex),
     ];
   }
 
-  #rotatePositive(rotateFactor) {
-    const swapElemIndex = this.#arr.length - rotateFactor;
-    return this.#swapArrayBlocksAfterIndex(swapElemIndex);
+  #rotatePositive(reducedFactor) {
+    const breakIndex = this.#arr.length - reducedFactor;
+    return this.#swapArrayBlocksOnIndex(breakIndex);
   }
 
-  #rotateNegative(rotateFactor) {
-    const swapElemIndex = Math.abs(rotateFactor);
-    return this.#swapArrayBlocksAfterIndex(swapElemIndex);
+  #rotateNegative(reducedFactor) {
+    const breakIndex = Math.abs(reducedFactor);
+    return this.#swapArrayBlocksOnIndex(breakIndex);
   }
 }
 
