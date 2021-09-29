@@ -1,0 +1,4 @@
+A Data Structure is a way to organize and store data, so that it can be accessed and manipulated efficiently. Some basic ones are Arrays, Queues, Stacks, Linked Lists.
+
+Array:
+An array is a way to store multiple items of the same type in a list, in a contiguous block of memory. You can do a lot of operations on it. Also build up a lot of data structures like Stacks and Queues on top of it.
