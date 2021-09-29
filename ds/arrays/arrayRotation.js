@@ -1,34 +1,34 @@
-function swapArrayBlocksAfterIndex(arr, loopStartIndex) {
+function swapArrayBlocksAfterIndex(arr, swapElemIndex) {
   const rotatedArr = [];
 
-  for (let i = loopStartIndex; i < arr.length; i++) {
-    const element = arr[i];
-    rotatedArr.push(element);
+  for (let i = swapElemIndex; i < arr.length; i++) {
+    const el = arr[i];
+    rotatedArr.push(el);
   }
 
-  for (let i = 0; i < loopStartIndex; i++) {
-    const element = arr[i];
-    rotatedArr.push(element);
+  for (let i = 0; i < swapElemIndex; i++) {
+    const el = arr[i];
+    rotatedArr.push(el);
   }
 
   return rotatedArr;
 }
 
-function rotateRight(arr, rotateFactor) {
-  const loopStartIndex = arr.length - rotateFactor;
-  return swapArrayBlocksAfterIndex(arr, loopStartIndex);
+function rotatePositive(arr, rotateFactor) {
+  const swapElemIndex = arr.length - rotateFactor;
+  return swapArrayBlocksAfterIndex(arr, swapElemIndex);
 }
 
-function rotateLeft(arr, rotateFactor) {
-  const loopStartIndex = Math.abs(rotateFactor);
-  return swapArrayBlocksAfterIndex(arr, loopStartIndex);
+function rotateNegative(arr, rotateFactor) {
+  const swapElemIndex = Math.abs(rotateFactor);
+  return swapArrayBlocksAfterIndex(arr, swapElemIndex);
 }
 
 function rotateArr(arr, rotateFactor) {
   const reducedFactor = rotateFactor % arr.length;
   if (reducedFactor === 0) return arr;
-  if (reducedFactor > 0)return rotateRight(arr, reducedFactor);
-  return rotateLeft(arr, reducedFactor);
+  if (reducedFactor > 0) return rotatePositive(arr, reducedFactor);
+  return rotateNegative(arr, reducedFactor);
 }
 
 function main() {
